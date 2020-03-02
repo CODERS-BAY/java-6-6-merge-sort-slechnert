@@ -65,6 +65,16 @@ public class MergeSort {
         return result;
     }
 
+    private static int[] randomArray(int length, int girth) {
+        int[] randomArray = new int[length];
+        int i = 0;
+        while (i < length) {
+            Random rando = new Random();
+            randomArray[i] = rando.nextInt(girth + 1);
+            ++i;
+        }
+        return randomArray;
+    }
 
     public static void main(String[] args) {
 
@@ -87,14 +97,4 @@ public class MergeSort {
     }
 
 
-    private static int[] randomArray(int length, int girth) {
-        int[] randomArray = new int[length];
-        int i = 0;
-        while (i < length) {
-            Random rando = new Random();
-            randomArray[i] = rando.nextInt(girth + 1);
-            ++i;
-        }
-        return randomArray;
-    }
 }
