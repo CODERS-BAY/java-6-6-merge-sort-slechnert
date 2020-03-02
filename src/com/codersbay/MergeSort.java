@@ -1,6 +1,8 @@
 package com.codersbay;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
 
 public class MergeSort {
 
@@ -9,7 +11,7 @@ public class MergeSort {
         int half = (array.length) / 2;
 
         //zu klein, kein split
-        if (array.length < 3) {
+        if (array.length < 2) {
             return array;
         }
 
@@ -51,10 +53,11 @@ public class MergeSort {
                 if (front[indexFront] < back[indexBack]) {
                     result[indexResult++] = front[indexFront++];
                 } else {
-                    result[indexResult++] = front[indexBack++];
+                    result[indexResult++] = back[indexBack++];
                 }
             } else if (indexFront < front.length) {
                 result[indexResult++] = front[indexFront++];
+
             } else if (indexBack < back.length) {
                 result[indexResult++] = back[indexBack++];
             }
@@ -64,14 +67,34 @@ public class MergeSort {
 
 
     public static void main(String[] args) {
-        System.out.println("Mergerinho");
-        int[] numbers = new int[]{54, 26, 7, 1, 421, 5, 3241, 412, 21, 64};
-        System.out.println(Arrays.toString(numbers));
 
-        numbers = split(numbers);
 
-        System.out.println(Arrays.toString(numbers));
+        System.out.println("How long should the array be?");
+        Scanner sc = new Scanner(System.in);
+        int arrayLength = sc.nextInt();
+
+        System.out.println("What the highest possible number be?");
+        Scanner sc2 = new Scanner(System.in);
+        int highestRandom = sc2.nextInt();
+
+        int myArray[] = randomArray(arrayLength, highestRandom);
+
+        System.out.println(Arrays.toString(myArray));
+        int[] output = split(myArray);
+        System.out.println(Arrays.toString(output));
+
+
     }
 
 
+    private static int[] randomArray(int length, int girth) {
+        int[] randomArray = new int[length];
+        int i = 0;
+        while (i < length) {
+            Random rando = new Random();
+            randomArray[i] = rando.nextInt(girth + 1);
+            ++i;
+        }
+        return randomArray;
+    }
 }
